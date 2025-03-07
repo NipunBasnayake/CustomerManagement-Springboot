@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,18 +29,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void addCustomer(Customer customer) {
+    public Boolean addCustomer(Customer customer) {
         customerRepository.save(modelMapper.map(customer, CustomerEntity.class));
+        return true;
     }
 
     @Override
-    public void updateCustomer(Customer customer) {
+    public Boolean updateCustomer(Customer customer) {
         customerRepository.save(modelMapper.map(customer, CustomerEntity.class));
+        return true;
     }
 
     @Override
-    public void deleteCustomer(int id) {
+    public Boolean deleteCustomer(int id) {
         customerRepository.deleteById(id);
+        return true;
     }
 
     @Override

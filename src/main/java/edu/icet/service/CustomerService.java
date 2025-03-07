@@ -8,11 +8,11 @@ public interface CustomerService {
     
     List<Customer> getAllCustomers();
 
-    void addCustomer(Customer customer);
+    Boolean addCustomer(Customer customer);
 
-    void updateCustomer(Customer customer);
+    Boolean updateCustomer(Customer customer);
 
-    void deleteCustomer(int id);
+    Boolean deleteCustomer(int id);
 
     Customer findById(int id);
 

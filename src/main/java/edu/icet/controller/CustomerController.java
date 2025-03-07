@@ -3,6 +3,7 @@ package edu.icet.controller;
 import edu.icet.dto.Customer;
 import edu.icet.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,32 +17,32 @@ public class CustomerController {
     final CustomerService customerService;
 
     @GetMapping("/all")
-    public List<Customer> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        return ResponseEntity.ok(customerService.getAllCustomers());
     }
 
     @PostMapping("/add")
-    public void addCustomer(@RequestBody Customer customer) {
-        customerService.addCustomer(customer);
+    public ResponseEntity<Boolean> addCustomer(@RequestBody Customer customer) {
+        return ResponseEntity.ok(customerService.addCustomer(customer));
     }
 
     @PutMapping("/update")
-    public void updateCustomer(@RequestBody Customer customer) {
-        customerService.updateCustomer(customer);
+    public ResponseEntity<Boolean> updateCustomer(@RequestBody Customer customer) {
+        return ResponseEntity.ok(customerService.updateCustomer(customer));
     }
 
     @DeleteMapping("delete/{id}")
-    public void deleteCustomer(@PathVariable int id) {
-        customerService.deleteCustomer(id);
+    public ResponseEntity<Boolean> deleteCustomer(@PathVariable int id) {
+        return ResponseEntity.ok(customerService.deleteCustomer(id));
     }
 
     @GetMapping("/searchById/{id}")
-    public Customer getCustomerById(@PathVariable int id) {
-        return customerService.findById(id);
+    public ResponseEntity<Customer> getCustomerById(@PathVariable int id) {
+        return ResponseEntity.ok(customerService.findById(id));
     }
 
     @GetMapping("/searchByName/{name}")
-    public List<Customer> getCustomerByName(@PathVariable String name) {
-        return customerService.findByName(name);
+    public ResponseEntity<List<Customer>> getCustomerByName(@PathVariable String name) {
+        return ResponseEntity.ok(customerService.findByName(name));
     }
 }
